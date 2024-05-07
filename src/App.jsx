@@ -1,25 +1,15 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import { Link } from "react-router-dom";
 
 import "./App.css";
-const API_URL = import.meta.env.VITE_SERVER_URL;
 function App() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`${API_URL}`)
-      .then((response) => setProducts(response.data.products))
-      .catch((error) => console.log(error));
-  }, []);
-  console.log(products);
-
   return (
     <div>
-      {products &&
-        products.map((product, index) => (
-          <div key={index}>{product.brand}</div>
-        ))}
+      <Link to="/home">Home</Link>
+      <Routes>
+        <Route path="/home" element={<Home />}></Route>
+      </Routes>
     </div>
   );
 }
