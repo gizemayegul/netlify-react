@@ -8,16 +8,18 @@ export default function Home() {
   useEffect(() => {
     axios
       .get(`${API_URL}`)
-      .then((response) => setProducts(response.data.products))
+      .then((response) => {
+        console.log(response);
+        setProducts(response.data);
+      })
       .catch((error) => console.log(error));
   }, []);
   console.log(products);
   return (
     <div>
-      {" "}
       {products &&
         products.map((product, index) => (
-          <div key={index}>{product.brand}</div>
+          <div key={index}>{product.title}</div>
         ))}
     </div>
   );
