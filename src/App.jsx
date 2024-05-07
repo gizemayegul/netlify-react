@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./App.css";
-
+const API_URL = import.meta.env.VITE_SERVER_URL;
 function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://dummyjson.com/products")
+      .get(`${API_URL}`)
       .then((response) => setProducts(response.data.products))
       .catch((error) => console.log(error));
   }, []);
