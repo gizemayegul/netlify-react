@@ -10,17 +10,18 @@ export default function Home() {
       .get(`${API_URL}`)
       .then((response) => {
         console.log(response);
-        setProducts(response.data);
+        setProducts(response.data.message);
       })
       .catch((error) => console.log(error));
   }, []);
   console.log(products);
   return (
     <div>
-      {products &&
+      {/* {products &&
         products.map((product, index) => (
           <div key={index}>{product.title}</div>
-        ))}
+        ))} */}
+      {products}
     </div>
   );
 }
